@@ -25,6 +25,8 @@ function GlobalStyle(){
                 flex: 1;
             }
             /* ./App fit Height */
+
+            /* arquivo index */
             .divLogin{
               background-color: ${appConfig.theme.colors.neutrals[700]};
               display: flex;
@@ -39,7 +41,12 @@ function GlobalStyle(){
               margin: auto;
               box-shadow: 0 2px 10px 0 white
             }
-            form{
+            
+            .divLogin h2{
+              margin-bottom:10px
+            }
+            
+            .divLogin form{
               display: flex; 
               flex-direction: column; 
               align-items:center; 
@@ -48,50 +55,151 @@ function GlobalStyle(){
               text-align: center; 
               margin: auto
             }
-            .divImg{
-              //display: flex;
-              //flexDirection: column;
-              align-items: center;
-              max-width: 200px;
-              margin: auto;
-              padding: 16px;
-              background-color: ${appConfig.theme.colors.neutrals[800]};
-              border: 1px solid;
-              border-color: ${appConfig.theme.colors.neutrals[999]};
-              border-radius: 10px;
-              flex: 1;
-              min-height: 240px;
-            }
-            h2{
-              margin-bottom:10px
-            }
-            img{
-              width:150px;
-              margin-left:5%;
-              margin-bottom: 10px;
-              border-radius:50%
-            }
-            span{
-              font-size:18px;
-              color: ${appConfig.theme.colors.neutrals[200]},
-              background-color: ${appConfig.theme.colors.neutrals[900]},
-              padding: 3px 10px,
-              border-radius: 1000px
-            margin:auto;
-            }
-            input{
+            
+            .divLogin input{
               width:100%;
               font-size:20px;
               margin-bottom:10px
             }
-            button{
+            
+            .divLogin button{
               width:100%;
               padding:5px;
               font-size:20px;
               border: none;
               background: ${appConfig.theme.colors.primary['900']}
             }
-        `}
+            
+            .divImg{
+              align-items: center;
+              max-width: 200px;
+              margin: auto;
+              //padding: 16px;
+              background-color: ${appConfig.theme.colors.neutrals[800]};
+              border: 1px solid;
+              border-color: ${appConfig.theme.colors.neutrals[999]};
+              border-radius: 10px;
+              flex: 1;
+              min-height: 240px
+            }
+            
+            .divImg img{
+              width:150px;
+              margin: 16px 10%;
+              border-radius:50%
+            }
+            
+            .divImg span{
+              font-size:18px;
+              color: ${appConfig.theme.colors.neutrals[200]};
+              margin: 5%
+            }
+            
+            /* arquivo chat */
+            .divChat{
+              display: flex; 
+              align-items: center; 
+              justify-content: center;
+              background-color: ${appConfig.theme.colors.primary[500]};
+              background-image: url(https:virtualbackgrounds.site/wp-content/uploads/2020/08/the-matrix-digital-rain.jpg);
+              background-repeat: no-repeat; 
+              background-size: cover; 
+              background-blend-mode: multiply;
+              color: ${appConfig.theme.colors.neutrals['000']}
+            }
+
+            .divBoxBackground{
+              display: flex;
+              flex-direction: column;
+              flex: 1;
+              box-shadow: '0 2px 10px 0 rgb(0 0 0 / 20%)';
+              border-radius: 5px;
+              background-color: ${appConfig.theme.colors.neutrals[700]};
+              height: auto;
+              max-width: 95%;
+              //max-height: 95vh;
+              margin: 20px;
+              padding: 32px
+            }  
+            
+            .divBoxBackground header{
+              width: 100%; 
+              margin-bottom: 16px; 
+              display: flex; 
+              align-items: center; 
+              justify-content: space-between
+            }  
+            
+            .divBoxBackground header button{
+              width: 10%;
+              padding: 5px;
+              font-size: 15px;
+              border: none;
+              background: ${appConfig.theme.colors.primary['900']}
+            }  
+
+            .divBoxChat{
+              position: relative;
+              display: flex;
+              flex: 1;
+              height: auto;
+              background-color: ${appConfig.theme.colors.neutrals[600]};
+              flex-direction: column;
+              border-radius: 5px;
+              padding: 16px
+            }
+        
+            .divBoxChat ul{
+              background-color:${appConfig.theme.colors.neutrals['600']};
+              width:100%
+              overflow: scroll;
+              display: flex;
+              flex-direction: column-reverse;
+              align-items: top; 
+              justify-content: space-between;            
+              flex: 1;
+              color: ${appConfig.theme.colors.neutrals["999"]};
+              margin-bottom: 16px
+            }    
+             
+            .divBoxChat ul li{
+              padding:10px;
+              border-radius: 5px;
+              padding: 6px;
+              padding-bottom: 12px
+            }
+            
+            .divBoxChat ul li:hover{
+              backgroundColor: ${appConfig.theme.colors.neutrals[700]};
+            }
+            
+            .divBoxChat ul li img{
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                display: inline-block;
+                margin-right: 18px;
+            }
+            
+            .divBoxChat ul li span{
+              font-size: 10px;
+              margin-left: 10px;
+              color: ${appConfig.theme.colors.neutrals[300]}
+            }
+
+            .divBoxChat form{
+              display: flex;
+              align-items: center;
+              width:100%;
+            }
+
+            .divBoxChat form textarea{
+              background-color: ${appConfig.theme.colors.neutrals[800]};
+              width:100%;
+              margin-top:10px;
+              padding:10px
+            }
+          `}
         </style>
     )
 }
