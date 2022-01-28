@@ -1,9 +1,9 @@
-//import { Box, Text, TextField, Image, Button } from '@skynexui/components';
 import React, { useEffect, useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { useRouter } from 'next/router';
-import Header from '../component/header';
-import MessageList from '../component/MensageList';
+import Header from '../src/components/header';
+import MessageList from '../src/components/MensageList';
+import { ButtonSendSticker } from '../src/components/ButtonSendSticker'
 
 const SUPA_BASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzI5MTQ4NiwiZXhwIjoxOTU4ODY3NDg2fQ.syv0toAzewa8x6wVZjWnYEUYLChZy_HNonqBcyS-jAk'
 
@@ -11,26 +11,47 @@ const SUPA_BASE_URL = 'https://aapvkigidfqjkcipibdj.supabase.co'
 
 const supabaseClient = createClient(SUPA_BASE_URL,SUPA_BASE_KEY)
 
+function escutaMensagensEmTempoReal(adicionaMensagem) {
+    return supabaseClient
+      .from('mensagem')
+      .on('INSERT', (respostaLive) => {
+        adicionaMensagem(respostaLive.new);
+      })
+      .subscribe();
+  }
+
 export default function ChatPage() {
     const [mensagem, setMensagem] = useState('');
     const [listaDeMensagens, setListaDeMensagens] = useState([]);
     const roteamento = useRouter()
+    const usuarioLogado = roteamento.query.username
     
     function selectSupaBase(){
-        supabaseClient.from('mensagem').select('*').order('id', { ascending: false }).then(({data}) => { 
-            setListaDeMensagens(data)
-            console.log("dados",data)
+        supabaseClient
+            .from('mensagem')
+            .select('*')
+            .order('id', { ascending:false})
+            .then(({data}) => { 
+                setListaDeMensagens(data)
         });
     }
 
     useEffect(() => {
         selectSupaBase()
+        escutaMensagensEmTempoReal((novaMensagem) => {
+            console.log('Criando nova mensagem')
+            setListaDeMensagens((valorAtual) => {
+                return [
+                    novaMensagem,
+                    ...valorAtual,
+                ]
+            });
+        })
     },[])
 
     function handleNovaMensagem(novaMensagem) {
         const mensagem = {
-            //id: listaDeMensagens.length + 1,
-            de: 'clovisbalreira',
+            de: usuarioLogado,
             texto: novaMensagem,
         };
 
@@ -41,11 +62,6 @@ export default function ChatPage() {
             ])
             .then(({data}) => {
                 console.log(data)
-                setListaDeMensagens([
-                    data[0],
-                    ...listaDeMensagens,
-                ]
-            );
         })
         setMensagem('');
     }
@@ -71,6 +87,10 @@ export default function ChatPage() {
                             }
                         }}>
                         </textarea>
+                        <ButtonSendSticker onStickerClick={(sticker) => {
+                            console.log('Usando o component salvar esse dado no banco',sticker)
+                            handleNovaMensagem(`sticker:${sticker}`)
+                        }}/>
                     </form>
                 </div>
             </div>

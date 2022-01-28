@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router'
-import Tit from '../component/titulo'
+import Tit from '../src/components/titulo'
 
 function HomePage(){
   const [username, setUserName] = useState('clovisbalreira')
@@ -11,7 +11,7 @@ function HomePage(){
       <div className='divLogin'>
         <form onSubmit={function (infosdoevento){
           infosdoevento.preventDefault()
-          roteamento.push('/chat')
+          roteamento.push(`/chat?username=${username}`)
         }}>
           <Tit tag="h1" texto="Bem Vindo de Volta"></Tit>
           <h2>Discord - Alura Matrix</h2>

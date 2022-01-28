@@ -199,6 +199,68 @@ function GlobalStyle(){
               margin-top:10px;
               padding:10px
             }
+
+            /* page ButtonSendSticker */
+            .divSticker{
+              position: 'relative';
+            }
+
+            .divSticker Button{
+              border-radius: 50%;
+              padding: 0 3px 0 0;
+              min-width: 50px;
+              min-height: 50px;
+              font-size: 20px;
+              margin-left: 20px;
+              margin-bottom: 8px;
+              line-height: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background-color: ${appConfig.theme.colors.neutrals[300]},
+              filter: isOpen ? 'grayscale(0)' : 'grayscale(1)    
+            }
+
+            .divSticker Button:hover{
+              filter: grayscale(0)
+            }
+
+            .divIsOpen{
+              display: flex;
+              flex-direction: column;
+              border-radius: 5px;
+              position: absolute;
+              background-color: ${appConfig.theme.colors.neutrals[800]};
+              width: 490px;
+              height: 300px;
+              right: 70px;
+              bottom: 110px;
+              padding: 16px;
+              box-shadow: rgba(4, 4, 5, 0.15) 0px 0px 0px 1px, rgba(0, 0, 0, 0.24) 0px 8px 16px 0px,
+            }
+
+            .divIsOpen ul{
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-between;
+              flex: 1;
+              padding-top: 16px;
+              overflow: scroll
+            }
+
+            .divIsOpen ul li{
+              width: 10%;
+              border-radius: 5px;
+              padding: 10px;
+            }
+
+            .divIsOpen ul li:focus{
+              backgroundColor: ${appConfig.theme.colors.neutrals[600]},
+            }
+
+            .divIsOpen ul li:hover{
+              backgroundColor: ${appConfig.theme.colors.neutrals[600]},
+            }
           `}
         </style>
     )
