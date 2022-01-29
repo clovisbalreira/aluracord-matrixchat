@@ -231,10 +231,10 @@ function GlobalStyle(){
               border-radius: 5px;
               position: absolute;
               background-color: ${appConfig.theme.colors.neutrals[800]};
-              width: 490px;
-              height: 300px;
-              right: 70px;
-              bottom: 110px;
+              width: 200px;
+              height: 150px;
+              right: 0px;
+              top: 0px;
               padding: 16px;
               box-shadow: rgba(4, 4, 5, 0.15) 0px 0px 0px 1px, rgba(0, 0, 0, 0.24) 0px 8px 16px 0px,
             }
@@ -251,7 +251,7 @@ function GlobalStyle(){
             .divIsOpen ul li{
               width: 10%;
               border-radius: 5px;
-              padding: 10px;
+              padding: 10px 20px 20px;
             }
 
             .divIsOpen ul li:focus{

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import appConfig from '../../config.json';
 
 export function ButtonSendSticker(props) {
@@ -7,8 +7,8 @@ export function ButtonSendSticker(props) {
   return (
     <div className='divSticker'>
         <button onClick={() => setOpenState(!isOpen)}>😋</button>
-        {
-          !isOpen && (
+        {console.log(isOpen)}
+        {!isOpen && (
             <div className='divIsOpen'
             onClick={() => setOpenState(true)}
             >
